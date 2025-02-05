@@ -23,7 +23,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity
+{
 
     private FirebaseAuth mAuth;
     TextView txtSignIn;
@@ -35,11 +36,13 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) ->
+        {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -56,15 +59,18 @@ public class RegisterActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        txtSignIn.setOnClickListener(new View.OnClickListener() {
+        txtSignIn.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent logIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(logIntent);
             }
         });
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v){
                 txtUserName = edtUserName.getText().toString();
@@ -72,50 +78,73 @@ public class RegisterActivity extends AppCompatActivity {
                 txtPassword = edtPassword.getText().toString().trim();
                 txtConfirmPassword = edtConfirmPassword.getText().toString().trim();
 
-                if(!TextUtils.isEmpty(txtUserName)){
-                    if(!TextUtils.isEmpty(txtEmail)){
-                        if (txtEmail.matches(emailPattern)) {
-                            if(!TextUtils.isEmpty(txtPassword)){
-                                if(!TextUtils.isEmpty(txtConfirmPassword)){
-                                    if (txtConfirmPassword.equals(txtPassword)){
+                if(!TextUtils.isEmpty(txtUserName))
+                {
+                    if(!TextUtils.isEmpty(txtEmail))
+                    {
+                        if (txtEmail.matches(emailPattern))
+                        {
+                            if(!TextUtils.isEmpty(txtPassword))
+                            {
+                                if(!TextUtils.isEmpty(txtConfirmPassword))
+                                {
+                                    if (txtConfirmPassword.equals(txtPassword))
+                                    {
                                         SingUpUser();
-                                    }else{
+                                    }
+                                    else
+                                    {
                                         edtConfirmPassword.setError("Confirm Password Don't Match Password.");
                                     }
-                                }else{
+                                }
+                                else
+                                {
                                     edtConfirmPassword.setError("Confirm Password Can't be empty.");
                                 }
-                            }else{
+                            }
+                            else
+                            {
                                 edtPassword.setError("Password Can't be empty.");
                             }
-                        }else{
+                        }
+                        else
+                        {
                             edtEmail.setError("Please enter a valid email.");
                         }
-                    }else {
+                    }
+                    else
+                    {
                         edtEmail.setError("Email Can't be empty.");
                     }
-                }else {
+                }
+                else
+                {
                     edtUserName.setError("Username Can't be empty.");
                 }
             }
         });
     }
 
-    private void SingUpUser() {
+    private void SingUpUser()
+    {
         progressBar.setVisibility(View.VISIBLE);
         btnSignUp.setVisibility(View.INVISIBLE);
-        mAuth.createUserWithEmailAndPassword(txtEmail, txtPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(txtEmail, txtPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>()
+        {
             @Override
-            public void onSuccess(AuthResult authResult) {
+            public void onSuccess(AuthResult authResult)
+            {
                 Toast.makeText(RegisterActivity.this, "Sign Up Successful !", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 
             }
-        }).addOnFailureListener(new OnFailureListener() {
+        }).addOnFailureListener(new OnFailureListener()
+        {
             @Override
-            public void onFailure(@NonNull Exception e) {
+            public void onFailure(@NonNull Exception e)
+            {
                 Toast.makeText(RegisterActivity.this, "Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.INVISIBLE);
                 btnSignUp.setVisibility(View.VISIBLE);
