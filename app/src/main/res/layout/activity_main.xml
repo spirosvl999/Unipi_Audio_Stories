@@ -27,6 +27,18 @@
         app:layout_constraintVertical_bias="0.149" />
 
     <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#2B48BD"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,18 +49,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintVertical_bias="0.096" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="344dp"
-        android:backgroundTint="#2B48BD"
-        android:text="Login"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="228dp"
+        android:layout_height="224dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

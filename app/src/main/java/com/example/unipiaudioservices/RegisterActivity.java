@@ -22,17 +22,24 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity
 {
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     TextView txtSignIn;
     EditText edtUserName, edtEmail,  edtPassword, edtConfirmPassword;
     ProgressBar progressBar;
     Button btnSignUp;
     String txtUserName, txtEmail,  txtPassword, txtConfirmPassword;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
 
 
     @Override
@@ -58,6 +65,9 @@ public class RegisterActivity extends AppCompatActivity
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        // Initialize Firebase Firestore
+        db = FirebaseFirestore.getInstance();
 
         txtSignIn.setOnClickListener(new View.OnClickListener()
         {
@@ -134,10 +144,33 @@ public class RegisterActivity extends AppCompatActivity
             @Override
             public void onSuccess(AuthResult authResult)
             {
-                Toast.makeText(RegisterActivity.this, "Sign Up Successful !", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                String userId = mAuth.getCurrentUser().getUid();
+
+                Map<String, Object> user = new HashMap<>();
+                user.put("Username", txtUserName);
+                user.put("Email", txtEmail);
+                user.put("Password", txtPassword);
+                user.put("Created", System.currentTimeMillis());
+
+                // Add a new document with a generated ID
+                db.collection("users")
+                        .document(userId)
+                        .set(user) // Use set() instead of add()
+                        .addOnSuccessListener(unused -> {
+                        //    @Override
+                        //    public void onSuccess(DocumentReference documentReference) {
+                                Toast.makeText(RegisterActivity.this, "Sign Up Successful !", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                        //    }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(RegisterActivity.this, "Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
             }
         }).addOnFailureListener(new OnFailureListener()
