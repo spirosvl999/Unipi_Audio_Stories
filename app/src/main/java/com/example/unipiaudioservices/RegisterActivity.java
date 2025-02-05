@@ -156,18 +156,18 @@ public class RegisterActivity extends AppCompatActivity
                 db.collection("users")
                         .document(userId)
                         .set(user) // Use set() instead of add()
-                        .addOnSuccessListener(unused -> {
-                        //    @Override
-                        //    public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(RegisterActivity.this, "Sign Up Successful !", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                        //    }
+                        .addOnSuccessListener(unused ->
+                        {
+                            Toast.makeText(RegisterActivity.this, "Sign Up Successful !", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         })
-                        .addOnFailureListener(new OnFailureListener() {
+                        .addOnFailureListener(new OnFailureListener()
+                        {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
+                            public void onFailure(@NonNull Exception e)
+                            {
                                 Toast.makeText(RegisterActivity.this, "Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
