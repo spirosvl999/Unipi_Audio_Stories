@@ -13,21 +13,25 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) ->
+        {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
         Button btnLogin = findViewById(R.id.button);                                                        // We go on the Login Activity.
-    btnLogin.setOnClickListener(new View.OnClickListener() {
+    btnLogin.setOnClickListener(new View.OnClickListener()
+    {
         @Override
         public void onClick(View v) {
             Intent logIntent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -36,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     });
 
         Button btnRegister = findViewById(R.id.button2);                                                    // This is for when we click on button to go on the register form
-    btnRegister.setOnClickListener(new View.OnClickListener(){
+    btnRegister.setOnClickListener(new View.OnClickListener()
+    {
         @Override
-        public void onClick(View view){
+        public void onClick(View view)
+        {
             Intent regIntent = new Intent(getApplicationContext(), RegisterActivity.class);
             startActivity(regIntent);
             }
