@@ -3,7 +3,7 @@
 This project is called "Unipi Audio Stories", created for the lesson "SOFTWARE TECHNOLOGY TOPICS - MOBILE SOFTWARE". Has fully functional Register and Log in/Log out methods using Firebase. This app is used for users to listen audio stories, like audio books but for stories for little kids. The user will be provided with statistics like as how many times he has listened each story. 
 
 
-![alt text](https://github.com/spirosvl999/Unipi_Audio_Stories/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp "App Logo.")<a href="https://www.linkedin.com/in/spiridon-vlachos-65ba78204/">
+![alt text]<a href="https://www.linkedin.com/in/spiridon-vlachos-65ba78204/">(https://github.com/spirosvl999/Unipi_Audio_Stories/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp "App Logo.")
 
 ## Programming Languages & Tools:
 
