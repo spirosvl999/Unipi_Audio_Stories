@@ -34,7 +34,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
         holder.Year.setText(model.getYear());
 
         Picasso.get().load(model.getImage())
-
+                .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
     }
 

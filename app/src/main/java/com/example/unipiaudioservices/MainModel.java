@@ -3,7 +3,7 @@ package com.example.unipiaudioservices;
 public class MainModel
 {
 
-    String name, tittle;
+    String name, tittle, image;
     int year;
 
     public MainModel(int year, String tittle, String name) {
@@ -29,6 +29,7 @@ public class MainModel
         return year;
     }
 
-    public int getImage() {
+    public String getImage() {
+        return image;
     }
 }
