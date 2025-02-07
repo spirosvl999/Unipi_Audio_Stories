@@ -28,4 +28,7 @@ public class MainModel
     public int getYear() {
         return year;
     }
+
+    public int getImage() {
+    }
 }

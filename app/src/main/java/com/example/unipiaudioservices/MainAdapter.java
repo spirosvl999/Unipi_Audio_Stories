@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,6 +32,10 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
         holder.Tittle.setText(model.getTittle());
         holder.Author.setText(model.getName());
         holder.Year.setText(model.getYear());
+
+        Picasso.get().load(model.getImage())
+
+                .into(holder.imageView);
     }
 
     @NonNull
