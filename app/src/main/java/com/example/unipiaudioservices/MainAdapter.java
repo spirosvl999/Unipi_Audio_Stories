@@ -27,32 +27,14 @@ public class MainAdapter extends FirestoreRecyclerAdapter<MainModel, MainAdapter
 
     @Override
     protected void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position, @NonNull MainModel model) {
-        if (model.getTittle() != null) {
-            holder.Tittle.setText(model.getTittle());
-        } else {
-            holder.Tittle.setText("No Title");
-        }
+        holder.Tittle.setText(model.getTittle());
+        holder.Author.setText(model.getAuthor());
+        holder.Year.setText(model.getYear_Created());
 
-        if (model.getAuthor() != null) {
-            holder.Author.setText(model.getAuthor());
-        } else {
-            holder.Author.setText("No Author");
-        }
-
-        if (model.getYear_Created() != null) {
-            holder.Year.setText(model.getYear_Created());
-        } else {
-            holder.Year.setText("No Year");
-        }
-
-        if (model.getPhoto_url() != null) {
-            Picasso.get()
-                    .load(model.getPhoto_url())
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .into(holder.imageView);
-        } else {
-            holder.imageView.setImageResource(R.drawable.ic_launcher_background);
-        }
+        Picasso.get()
+                .load(model.getPhoto_url())
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(holder.imageView);
     }
 
 

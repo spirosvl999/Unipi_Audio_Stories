@@ -35,6 +35,7 @@ public class Menu_Stories extends AppCompatActivity {
 
         mainAdapter = new MainAdapter(options);
         recyclerView.setAdapter(mainAdapter);
+
     }
 
 
