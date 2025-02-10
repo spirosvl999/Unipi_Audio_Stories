@@ -23,4 +23,4 @@ This project is called "Unipi Audio Stories", created for the lesson "SOFTWARE T
 - [Vlachos Spiridon](https://github.com/spirosvl999)
 
 ## Last Updated
-This project was last updated on [2/5/2025].
+This project was last updated on [2/10/2025].
