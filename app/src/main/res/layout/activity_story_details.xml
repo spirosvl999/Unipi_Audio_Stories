@@ -40,7 +40,7 @@
             android:id="@+id/yearTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Year: 2024"
+            android:text="Year"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="16dp"
             android:maxLines="5"
             android:ellipsize="end"
-            android:text="This is a short preview of the story..."
+            android:text="This is a preview of the story..."
             android:textColor="@color/black"
             android:textSize="16sp" />
 
