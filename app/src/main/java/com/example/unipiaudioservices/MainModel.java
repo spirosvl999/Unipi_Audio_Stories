@@ -3,7 +3,7 @@ package com.example.unipiaudioservices;
 public class MainModel {
     private String Tittle;
     private String Author;
-    private String Year_Created;
+    private long Year_Created; // Change from String to long
     private String photo_url;
 
     public MainModel() {
@@ -26,11 +26,11 @@ public class MainModel {
         Author = author;
     }
 
-    public String getYear_Created() {
+    public long getYear_Created() {
         return Year_Created;
     }
 
-    public void setYear_Created(String year_Created) {
+    public void setYear_Created(long year_Created) {
         Year_Created = year_Created;
     }
 

@@ -29,7 +29,7 @@ public class MainAdapter extends FirestoreRecyclerAdapter<MainModel, MainAdapter
     protected void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position, @NonNull MainModel model) {
         holder.Tittle.setText(model.getTittle());
         holder.Author.setText(model.getAuthor());
-        holder.Year.setText(model.getYear_Created());
+        holder.Year.setText(String.valueOf(model.getYear_Created()));
 
         Picasso.get()
                 .load(model.getPhoto_url())
