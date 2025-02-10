@@ -4,6 +4,8 @@ public class MainModel
 {
     private String Tittle;
     private String Author;
+    private String Inside; // The main content of the story
+
     private long Year_Created; // Change from String to long
     private String photo_url;
 
@@ -30,6 +32,13 @@ public class MainModel
     public void setAuthor(String author)
     {
         Author = author;
+    }
+    public String getInside() {
+        return Inside;
+    }
+
+    public void setInside(String inside) {
+        this.Inside = inside;
     }
 
     public long getYear_Created()

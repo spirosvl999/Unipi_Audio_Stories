@@ -1,5 +1,6 @@
 package com.example.unipiaudioservices;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,17 @@ public class MainAdapter extends FirestoreRecyclerAdapter<MainModel, MainAdapter
                 .load(model.getPhoto_url())
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
+
+        // Handle item clicks
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), StoryDetailsActivity.class);
+            intent.putExtra("Tittle", model.getTittle());
+            intent.putExtra("Author", model.getAuthor());
+            intent.putExtra("Year_Created", model.getYear_Created());
+            intent.putExtra("PhotoUrl", model.getPhoto_url());
+            intent.putExtra("Inside", model.getInside()); // Pass full story content
+            view.getContext().startActivity(intent);
+        });
     }
 
 

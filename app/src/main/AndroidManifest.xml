@@ -23,6 +23,7 @@
             android:name=".LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.UnipiAudioServices" />
+        <activity android:name=".StoryDetailsActivity"/>
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
