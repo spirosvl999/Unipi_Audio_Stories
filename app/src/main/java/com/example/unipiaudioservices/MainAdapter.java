@@ -38,9 +38,11 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
                 .into(holder.imageView);
     }
 
+
     @NonNull
     @Override
-    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item,parent,false));
     }
 
