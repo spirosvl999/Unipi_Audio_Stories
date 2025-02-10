@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+//import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
         //        if (itemId == R.id.nav_menu) {
         //            startActivity(new Intent(ProfileActivity.this, Menu_Stories.class));
         //            return true;
-        //        } else if (itemId == R.id.nav_profile) {
+        //       } else if (itemId == R.id.nav_profile) {
         //            startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
         //            return true;
         //        }
