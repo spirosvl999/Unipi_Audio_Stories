@@ -1,35 +1,44 @@
 package com.example.unipiaudioservices;
 
-public class MainModel
-{
+public class MainModel {
+    private String Tittle;
+    private String Author;
+    private String Year_Created;
+    private String photo_url;
 
-    String name, tittle, image;
-    int year;
-
-    public MainModel(int year, String tittle, String name) {
-        this.year = year;
-        this.tittle = tittle;
-        this.name = name;
-    }
-
-    public MainModel()
-    {
-
-    }
-
-    public String getName() {
-        return name;
+    public MainModel() {
+        // Default constructor required for Firebase deserialization
     }
 
     public String getTittle() {
-        return tittle;
+        return Tittle;
     }
 
-    public int getYear() {
-        return year;
+    public void setTittle(String tittle) {
+        Tittle = tittle;
     }
 
-    public String getImage() {
-        return image;
+    public String getAuthor() {
+        return Author;
+    }
+
+    public void setAuthor(String author) {
+        Author = author;
+    }
+
+    public String getYear_Created() {
+        return Year_Created;
+    }
+
+    public void setYear_Created(String year_Created) {
+        Year_Created = year_Created;
+    }
+
+    public String getPhoto_url() {
+        return photo_url;
+    }
+
+    public void setPhoto_url(String photo_url) {
+        this.photo_url = photo_url;
     }
 }
