@@ -14,30 +14,35 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class Menu_Stories extends AppCompatActivity {
+public class FavStoriesActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    MainAdapter mainAdapter;
-    FirebaseFirestore db;
+    private RecyclerView recyclerView;
+    private FavStoriesAdapter adapter;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_stories);
+        setContentView(R.layout.activity_fav_stories);
+
+        // Set up Firestore database
+        db = FirebaseFirestore.getInstance();
 
         // RecyclerView setup
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Query query = FirebaseFirestore.getInstance()
-                .collection("Stories");
+        // Create query to fetch favorite stories
+        Query query = db.collection("FavoriteStories");
 
-        FirestoreRecyclerOptions<MainModel> options = new FirestoreRecyclerOptions.Builder<MainModel>()
-                .setQuery(query, MainModel.class)
+        // Create FirestoreRecyclerOptions with query
+        FirestoreRecyclerOptions<FavStoryModel> options = new FirestoreRecyclerOptions.Builder<FavStoryModel>()
+                .setQuery(query, FavStoryModel.class)
                 .build();
 
-        mainAdapter = new MainAdapter(options);
-        recyclerView.setAdapter(mainAdapter);
+        // Set up adapter with options
+        adapter = new FavStoriesAdapter(options);
+        recyclerView.setAdapter(adapter);
 
         // Bottom Navigation Bar setup
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -50,10 +55,11 @@ public class Menu_Stories extends AppCompatActivity {
 
                 if (itemId == R.id.nav_menu) {
                     // Already in Menu_Stories, do nothing
+                    startActivity(new Intent(FavStoriesActivity.this, Menu_Stories.class));
                     return true;
                 } else if (itemId == R.id.nav_profile) {
                     // Go to ProfileActivity
-                    startActivity(new Intent(Menu_Stories.this, ProfileActivity.class));
+                    startActivity(new Intent(FavStoriesActivity.this, ProfileActivity.class));
                     return true;
                 }
                 return false;
@@ -63,13 +69,12 @@ public class Menu_Stories extends AppCompatActivity {
         // Highlight the correct tab (already in Menu_Stories)
         bottomNavigationView.setSelectedItemId(R.id.nav_menu); // This should be correct
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-        // Start listening for changes in Firestore
-        if (mainAdapter != null) {
-            mainAdapter.startListening();
+        // Start listening to Firestore changes
+        if (adapter != null) {
+            adapter.startListening();
         }
     }
 
@@ -77,8 +82,8 @@ public class Menu_Stories extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         // Stop listening to avoid memory leaks
-        if (mainAdapter != null) {
-            mainAdapter.stopListening();
+        if (adapter != null) {
+            adapter.stopListening();
         }
     }
 }
