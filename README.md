@@ -10,9 +10,8 @@ This project is called "Unipi Audio Stories", created for the lesson "SOFTWARE T
 
 - Java
 
-## Tools Used:
- 
-- Firebase
+- Firebase Firestore Database
+
 
 ## Enviroments Used:
 
