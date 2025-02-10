@@ -29,7 +29,7 @@ public class FavStoriesActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         // RecyclerView setup
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.favStoriesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Create query to fetch favorite stories

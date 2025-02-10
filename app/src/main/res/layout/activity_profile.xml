@@ -60,12 +60,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailTextView" />
 
-    <ImageView
+    <!-- CircleImageView for Story Image -->
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/storyImageView"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="10dp"
-        android:scaleType="centerCrop"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mostListenedTextView" />
@@ -93,10 +95,10 @@
         android:text="View Favorite Stories"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listenCountTextView"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
