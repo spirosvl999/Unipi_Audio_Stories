@@ -6,20 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.unipiaudioservices.databinding.ActivityMenuStoriesBinding;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class Menu_Stories extends AppCompatActivity {
+public class Menu_Stories extends AppCompatActivity
+{
 
     RecyclerView recyclerView;
     MainAdapter mainAdapter;
     FirebaseFirestore db;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_stories);
 
@@ -40,7 +40,8 @@ public class Menu_Stories extends AppCompatActivity {
 
 
     @Override
-    protected void onStart() {
+    protected void onStart()
+    {
         super.onStart();
         // Start listening for changes in Firestore
         if (mainAdapter != null) {
@@ -49,7 +50,8 @@ public class Menu_Stories extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop()
+    {
         super.onStop();
         // Stop listening to avoid memory leaks
         if (mainAdapter != null) {

@@ -14,19 +14,22 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainAdapter extends FirestoreRecyclerAdapter<MainModel, MainAdapter.ViewHolder> {
+public class MainAdapter extends FirestoreRecyclerAdapter<MainModel, MainAdapter.ViewHolder>
+{
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firestore query.
      *
      * @param options The FirestoreRecyclerOptions containing the query and model class.
      */
-    public MainAdapter(@NonNull FirestoreRecyclerOptions<MainModel> options) {
+    public MainAdapter(@NonNull FirestoreRecyclerOptions<MainModel> options)
+    {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position, @NonNull MainModel model) {
+    protected void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position, @NonNull MainModel model)
+    {
         holder.Tittle.setText(model.getTittle());
         holder.Author.setText(model.getAuthor());
         holder.Year.setText(String.valueOf(model.getYear_Created()));
@@ -41,18 +44,21 @@ public class MainAdapter extends FirestoreRecyclerAdapter<MainModel, MainAdapter
 
     @NonNull
     @Override
-    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         // Inflate the layout for each item
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item, parent, false);
         return new ViewHolder(view);
     }
 
-    // ViewHolder class
-    public class ViewHolder extends RecyclerView.ViewHolder {
+
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
         CircleImageView imageView;
         TextView Tittle, Author, Year;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView)
+        {
             super(itemView);
 
             // Initialize the UI components
