@@ -16,9 +16,9 @@ import com.google.firebase.firestore.Query;
 
 public class FavStoriesActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private FavStoriesAdapter adapter;
-    private FirebaseFirestore db;
+    RecyclerView recyclerView;
+    FavStoriesAdapter adapter;
+     FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

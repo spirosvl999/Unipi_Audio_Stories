@@ -1,51 +1,62 @@
 package com.example.unipiaudioservices;
 
 public class FavStoryModel {
-    private String title;
-    private String author;
-    private String yearCreated;
-    private String imageUrl; // Optional, if you have an image URL
+    private String Tittle;
+    private String Author;
+    private String Inside; // The main content of the story
 
-    public FavStoryModel() {
-        // Firestore needs an empty constructor
+    private long Year_Created; // Change from String to long
+    private String photo_url;
+
+    public FavStoryModel()
+    {
+        // Default constructor required for Firebase deserialization
     }
 
-    public FavStoryModel(String title, String author, String yearCreated, String imageUrl) {
-        this.title = title;
-        this.author = author;
-        this.yearCreated = yearCreated;
-        this.imageUrl = imageUrl;
+    public String getTittle()
+    {
+        return Tittle;
     }
 
-    public String getTitle() {
-        return title;
+    public void setTittle(String tittle)
+    {
+        Tittle = tittle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getAuthor()
+    {
+        return Author;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setAuthor(String author)
+    {
+        Author = author;
+    }
+    public String getInside() {
+        return Inside;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setInside(String inside) {
+        this.Inside = inside;
     }
 
-    public String getYearCreated() {
-        return yearCreated;
+    public long getYear_Created()
+    {
+        return Year_Created;
     }
 
-    public void setYearCreated(String yearCreated) {
-        this.yearCreated = yearCreated;
+    public void setYear_Created(long year_Created)
+    {
+        Year_Created = year_Created;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getPhoto_url()
+    {
+        return photo_url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setPhoto_url(String photo_url)
+    {
+        this.photo_url = photo_url;
     }
 }

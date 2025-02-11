@@ -29,23 +29,23 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull FavStoryModel model) {
         // Bind the data to the views
-        holder.title.setText(model.getTitle());
+        holder.title.setText(model.getTittle());
         holder.author.setText(model.getAuthor());
-        holder.year.setText(String.valueOf(model.getYearCreated()));
+        holder.year.setText(String.valueOf(model.getYear_Created()));
 
         // Load image with Picasso
         Picasso.get()
-                .load(model.getImageUrl())
+                .load(model.getPhoto_url())
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
 
         // Handle item clicks
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), StoryDetailsActivity.class);
-            intent.putExtra("Title", model.getTitle());
+            intent.putExtra("Title", model.getTittle());
             intent.putExtra("Author", model.getAuthor());
-            intent.putExtra("YearCreated", model.getYearCreated());
-            intent.putExtra("ImageUrl", model.getImageUrl());
+            intent.putExtra("YearCreated", model.getYear_Created());
+            intent.putExtra("ImageUrl", model.getPhoto_url());
             view.getContext().startActivity(intent);
         });
     }

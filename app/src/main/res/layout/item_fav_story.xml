@@ -34,7 +34,7 @@
 
             <!-- Story Title -->
             <TextView
-                android:id="@+id/storyTitle"
+                android:id="@+id/Tittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
