@@ -11,27 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, FavStoriesAdapter.ViewHolder> {
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firestore query.
-     *
-     * @param options The FirestoreRecyclerOptions containing the query and model class.
-     */
     public FavStoriesAdapter(@NonNull FirestoreRecyclerOptions<FavStoryModel> options) {
         super(options);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull FavStoryModel model) {
-        // Bind the data to the views
         holder.title.setText(model.getTittle());
-        holder.author.setText(model.getAuthor());
-        holder.year.setText(String.valueOf(model.getYear_Created()));
 
         // Load image with Picasso
         Picasso.get()
@@ -39,38 +34,60 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
 
+        // Fetch listen_count from Firestore
+        fetchListenCount(holder.listenCount, model.getTittle());
+
         // Handle item clicks
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), StoryDetailsActivity.class);
             intent.putExtra("Title", model.getTittle());
-            intent.putExtra("Author", model.getAuthor());
-            intent.putExtra("YearCreated", model.getYear_Created());
             intent.putExtra("ImageUrl", model.getPhoto_url());
             view.getContext().startActivity(intent);
         });
     }
 
+    // Fetch listen count from "Statistics" collection
+    private void fetchListenCount(TextView listenCountView, String storyTitle) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // Get current user ID
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Statistics")
+                .document(userId)  // User's statistics document
+                .collection("Stories")
+                .document(storyTitle) // Specific story statistics
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Long listenCount = documentSnapshot.getLong("listen_count");
+                        if (listenCount != null) {
+                            listenCountView.setText("Listen Count: " + listenCount);
+                        } else {
+                            listenCountView.setText("Listen Count: 0");
+                        }
+                    } else {
+                        listenCountView.setText("Listen Count: 0");
+                    }
+                })
+                .addOnFailureListener(e -> listenCountView.setText("Listen Count: 0"));
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate the layout for each item
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fav_story, parent, false);
         return new ViewHolder(view);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // UI elements for each item
         CircleImageView imageView;
-        TextView title, author, year;
+        TextView title, listenCount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            // Initialize the UI components
-            imageView = itemView.findViewById(R.id.imageView);
-            title = itemView.findViewById(R.id.tittleTextView);
-            author = itemView.findViewById(R.id.authorTextView);
-            year = itemView.findViewById(R.id.yearTextView);
+            imageView = itemView.findViewById(R.id.storyImage);
+            title = itemView.findViewById(R.id.Tittle);
+            listenCount = itemView.findViewById(R.id.listenCount);
         }
     }
 }
