@@ -25,8 +25,7 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull FavStoryModel model) {
-        // Bind the data to the views
-        holder.title.setText(model.getTittle());
+        holder.title.setText(model.getTittle()); // Corrected field name
 
         // Load image with Picasso
         Picasso.get()
@@ -37,7 +36,7 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
         // Fetch listen count from Statistics collection
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Statistics")
-                .whereEqualTo("story_id", model.getTittle()) // Match story title
+                .whereEqualTo("story_id", model.getstory_id()) // Assuming story_id is available
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {

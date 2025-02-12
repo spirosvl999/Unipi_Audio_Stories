@@ -41,7 +41,6 @@ public class Menu_Stories extends AppCompatActivity {
 
         // Bottom Navigation Bar setup
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu);  // Make sure this is correct
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -54,6 +53,9 @@ public class Menu_Stories extends AppCompatActivity {
                 } else if (itemId == R.id.nav_profile) {
                     // Go to ProfileActivity
                     startActivity(new Intent(Menu_Stories.this, ProfileActivity.class));
+                    return true;
+                }else if (itemId ==R.id.nav_settings){
+                    startActivity(new Intent(Menu_Stories.this, SettingsActivity.class));
                     return true;
                 }
                 return false;

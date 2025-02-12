@@ -5,6 +5,8 @@ public class FavStoryModel {
     private String Author;
     private String Inside;
     private String photo_url;
+    private String user_id;
+    private String story_id;
     private int listen_count; // New field for listen count
 
     public FavStoryModel() {
@@ -49,5 +51,21 @@ public class FavStoryModel {
 
     public void setListen_count(int listen_count) {
         this.listen_count = listen_count;
+    }
+
+    public String getuser_id() {
+        return user_id;
+    }
+
+    public void setuser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getstory_id() {
+        return story_id;
+    }
+
+    public void setstory_id(String story_id) {
+        this.story_id = story_id;
     }
 }

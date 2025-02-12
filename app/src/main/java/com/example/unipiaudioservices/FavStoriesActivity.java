@@ -58,7 +58,6 @@ public class FavStoriesActivity extends AppCompatActivity {
 
         // Bottom Navigation Bar setup
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -71,7 +70,11 @@ public class FavStoriesActivity extends AppCompatActivity {
                 } else if (itemId == R.id.nav_profile) {
                     startActivity(new Intent(FavStoriesActivity.this, ProfileActivity.class));
                     return true;
+                }else if (itemId ==R.id.nav_settings){
+                startActivity(new Intent(FavStoriesActivity.this, SettingsActivity.class));
+                return true;
                 }
+
                 return false;
             }
         });

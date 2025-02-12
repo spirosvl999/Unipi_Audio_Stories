@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -64,6 +65,32 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = new Intent(ProfileActivity.this, FavStoriesActivity.class);
             startActivity(intent);
         });
+
+        // Bottom Navigation Setup
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.nav_menu) {
+                    startActivity(new Intent(ProfileActivity.this, Menu_Stories.class));
+                    return true;
+                } else if (itemId == R.id.nav_profile) {
+                    // Already in Profile activity dont do nothing
+                    return true;
+                } else if (itemId == R.id.nav_settings) {
+                    startActivity(new Intent(ProfileActivity.this, SettingsActivity.class));
+                    return true;
+                }
+
+                return false;
+            }
+        });
+
+        // Highlight the Profile tab since we are on the ProfileActivity
+        bottomNavigationView.setSelectedItemId(R.id.nav_profile);
     }
 
     // Load user profile from Firestore
