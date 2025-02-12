@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button favStoriesButton;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-    private String user_id;
+    private String userId;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,9 +37,9 @@ public class ProfileActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Get the user_id (document name in "users" collection)
+        // Get the logged-in user's ID
         if (auth.getCurrentUser() != null) {
-            user_id = auth.getCurrentUser().getUid();
+            userId = auth.getCurrentUser().getUid();
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
             return;
@@ -66,21 +66,17 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    // Load user profile from Firestore using HashMap
+    // Load user profile from Firestore
     private void loadUserProfile() {
-        db.collection("users").document(user_id).get()
+        db.collection("users").document(userId).get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        // Retrieve user data as a HashMap
-                        Map<String, Object> userData = documentSnapshot.getData();
-                        if (userData != null) {
-                            String username = (String) userData.get("username");
-                            String email = (String) userData.get("email");
+                        String username = documentSnapshot.getString("Username");
+                        String email = documentSnapshot.getString("Email");
 
-                            // Set values in UI
-                            usernameTextView.setText("Username: " + username);
-                            emailTextView.setText("Email: " + email);
-                        }
+                        // Set values in UI
+                        usernameTextView.setText("Username: " + (username != null ? username : "N/A"));
+                        emailTextView.setText("Email: " + (email != null ? email : "N/A"));
                     } else {
                         Toast.makeText(this, "User profile not found", Toast.LENGTH_SHORT).show();
                     }
@@ -93,34 +89,33 @@ public class ProfileActivity extends AppCompatActivity {
     // Load most listened story data
     private void loadMostListenedStory() {
         db.collection("Statistics")
-                .whereEqualTo("user_id", user_id)
+                .whereEqualTo("user_id", userId)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     int maxCount = 0;
-                    String mostListenedStoryId = null;
+                    String mostListenedStoryTitle = null;
 
-                    // Find the story with max listens
+                    // Find the story with the highest listen count
                     for (var doc : queryDocumentSnapshots) {
-                        Map<String, Object> statData = doc.getData();
-                        if (statData != null) {
-                            Long countValue = (Long) statData.get("listen_count");
-                            if (countValue != null) {
-                                int count = countValue.intValue();
-                                if (count > maxCount) {
-                                    maxCount = count;
-                                    mostListenedStoryId = (String) statData.get("story_id");
-                                }
+                        Long countValue = doc.getLong("listen_count");
+                        String storyTitle = doc.getString("story_id"); // story_id is actually Tittle
+
+                        if (countValue != null && storyTitle != null) {
+                            int count = countValue.intValue();
+                            if (count > maxCount) {
+                                maxCount = count;
+                                mostListenedStoryTitle = storyTitle;
                             }
                         }
                     }
 
-                    // Fetch details of the most listened story if found
-                    if (mostListenedStoryId != null) {
-                        fetchStoryDetails(mostListenedStoryId, maxCount);
+                    // Fetch story details if found
+                    if (mostListenedStoryTitle != null) {
+                        fetchStoryDetails(mostListenedStoryTitle, maxCount);
                     } else {
                         mostListenedStoryTextView.setText("Most Listened Story: None");
                         listenCountTextView.setText("Listen Count: 0");
-                        storyImageView.setImageResource(R.drawable.ic_launcher_foreground); // Set a default image
+                        storyImageView.setImageResource(R.drawable.ic_launcher_foreground);
                     }
                 })
                 .addOnFailureListener(e ->
@@ -128,27 +123,27 @@ public class ProfileActivity extends AppCompatActivity {
                 );
     }
 
-    // Fetch story details by story ID
-    private void fetchStoryDetails(String storyId, int listenCount) {
-        db.collection("Stories").document(storyId).get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        // Retrieve story data as a HashMap
-                        Map<String, Object> storyData = documentSnapshot.getData();
-                        if (storyData != null) {
-                            String title = (String) storyData.get("Tittle");
-                            String photoUrl = (String) storyData.get("PhotoUrl");
+    // Fetch story details by matching `Tittle` in the "Stories" collection
+    private void fetchStoryDetails(String storyTitle, int listenCount) {
+        db.collection("Stories")
+                .whereEqualTo("Tittle", storyTitle) // Match Tittle with story_id from Statistics
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        // Get the first matching document
+                        var documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                        String title = documentSnapshot.getString("Tittle");
+                        String photoUrl = documentSnapshot.getString("photo_url");
 
-                            // Set story title and listen count in UI
-                            mostListenedStoryTextView.setText("Most Listened Story: " + title);
-                            listenCountTextView.setText("Listen Count: " + listenCount);
+                        // Set story title and listen count in UI
+                        mostListenedStoryTextView.setText("Most Listened Story: " + title);
+                        listenCountTextView.setText("Listen Count: " + listenCount);
 
-                            // Load story image using Picasso
-                            if (photoUrl != null && !photoUrl.isEmpty()) {
-                                Picasso.get().load(photoUrl).into(storyImageView);
-                            } else {
-                                storyImageView.setImageResource(R.drawable.ic_launcher_foreground);
-                            }
+                        // Load story image using Picasso
+                        if (photoUrl != null && !photoUrl.isEmpty()) {
+                            Picasso.get().load(photoUrl).into(storyImageView);
+                        } else {
+                            storyImageView.setImageResource(R.drawable.ic_launcher_foreground);
                         }
                     } else {
                         Toast.makeText(this, "Story details not found", Toast.LENGTH_SHORT).show();

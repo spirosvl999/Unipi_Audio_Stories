@@ -5,6 +5,7 @@ public class FavStoryModel {
     private String Author;
     private String Inside;
     private String photo_url;
+    private int listen_count; // New field for listen count
 
     public FavStoryModel() {
         // Default constructor for Firebase
@@ -40,5 +41,13 @@ public class FavStoryModel {
 
     public void setPhoto_url(String photo_url) {
         this.photo_url = photo_url;
+    }
+
+    public int getListen_count() {
+        return listen_count;
+    }
+
+    public void setListen_count(int listen_count) {
+        this.listen_count = listen_count;
     }
 }

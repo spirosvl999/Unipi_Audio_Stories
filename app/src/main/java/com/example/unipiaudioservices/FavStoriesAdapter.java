@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -26,6 +25,7 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull FavStoryModel model) {
+        // Bind the data to the views
         holder.title.setText(model.getTittle());
 
         // Load image with Picasso
@@ -34,41 +34,31 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
 
-        // Fetch listen_count from Firestore
-        fetchListenCount(holder.listenCount, model.getTittle());
+        // Fetch listen count from Statistics collection
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Statistics")
+                .whereEqualTo("story_id", model.getTittle()) // Match story title
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        int totalListens = 0;
+                        for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                            totalListens += doc.getLong("listen_count").intValue();
+                        }
+                        holder.listenCount.setText("Listen Count: " + totalListens);
+                    } else {
+                        holder.listenCount.setText("Listen Count: 0");
+                    }
+                });
 
         // Handle item clicks
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), StoryDetailsActivity.class);
             intent.putExtra("Title", model.getTittle());
+            intent.putExtra("Author", model.getAuthor());
             intent.putExtra("ImageUrl", model.getPhoto_url());
             view.getContext().startActivity(intent);
         });
-    }
-
-    // Fetch listen count from "Statistics" collection
-    private void fetchListenCount(TextView listenCountView, String storyTitle) {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // Get current user ID
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("Statistics")
-                .document(userId)  // User's statistics document
-                .collection("Stories")
-                .document(storyTitle) // Specific story statistics
-                .get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        Long listenCount = documentSnapshot.getLong("listen_count");
-                        if (listenCount != null) {
-                            listenCountView.setText("Listen Count: " + listenCount);
-                        } else {
-                            listenCountView.setText("Listen Count: 0");
-                        }
-                    } else {
-                        listenCountView.setText("Listen Count: 0");
-                    }
-                })
-                .addOnFailureListener(e -> listenCountView.setText("Listen Count: 0"));
     }
 
     @NonNull
@@ -84,7 +74,6 @@ public class FavStoriesAdapter extends FirestoreRecyclerAdapter<FavStoryModel, F
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.storyImage);
             title = itemView.findViewById(R.id.Tittle);
             listenCount = itemView.findViewById(R.id.listenCount);
