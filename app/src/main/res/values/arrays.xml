@@ -2,6 +2,7 @@
     <string-array name="languages_array">
         <item>English</item>
         <item>Ελληνικά</item>
-        <item>Shqipe</item>
+        <item>Shqiptare</item>
+        <item>Italiano</item>
     </string-array>
 </resources>

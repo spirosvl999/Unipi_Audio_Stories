@@ -65,7 +65,10 @@ public class SettingsActivity extends AppCompatActivity {
                     languageToLoad = "el";
                 } else if (selectedLanguage.equals("Shqiptare")) {
                     languageToLoad = "sq";
+                }else if (selectedLanguage.equals("Italiano")) {
+                    languageToLoad = "it";
                 }
+
 
                 if (languageToLoad != null) {
                     // Save the selected language

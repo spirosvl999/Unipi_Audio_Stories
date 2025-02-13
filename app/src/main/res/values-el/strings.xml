@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Unipi Αφηγήσεις Ηχου</string>
-    <string name="welcome_message">Καλώς ήρθατε στις Αφηγήσεις Ηχου του Unipi!</string>
+    <string name="app_name">Unipi Audio Stories</string>
+    <string name="welcome_message">Καλώς ήρθατε στο Unipi Audio Stories!</string>
     <string name="login_button">Σύνδεση</string>
     <string name="register_button">Εγγραφή</string>
     <string name="profile_title">Προφίλ</string>
     <string name="username">Όνομα χρήστη: user123</string>
     <string name="email">Email: user@example.com</string>
-    <string name="most_listened_story">Πιο Ακουστή Ιστορία:</string>
+    <string name="most_listened_story">Αγαπημένη Ιστορία:</string>
     <string name="listen_count">Αριθμός Ακροάσεων: 10</string>
     <string name="view_favorite_stories">Προβολή Αγαπημένων Ιστοριών</string>
     <string name="settings_title">Ρυθμίσεις</string>
