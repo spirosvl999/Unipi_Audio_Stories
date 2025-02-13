@@ -4,7 +4,7 @@ This project is called "Unipi Audio Stories", created for the lesson "SOFTWARE T
 
 <p align="center"><a href="https://github.com/spirosvl999/Unipi_Audio_Stories"><img src="https://github.com/spirosvl999/Unipi_Audio_Stories/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" height="300" width="300" /></p>
 
-The user will be provided with statistics like as how many times he has listened each story. Also you have the ability to change between languages.
+The user will be provided with statistics like as how many times he has listened each story. Also you have the ability to change between languages (At the moment we have English, Greek and Albanian, probably more languages coming soon).
 
 
 ## Programming Languages & Tools:
