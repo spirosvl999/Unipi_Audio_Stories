@@ -1,6 +1,7 @@
 package com.example.unipiaudioservices;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 
@@ -38,6 +39,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story_details);
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
 
         // Initialize Firestore & Auth
         db = FirebaseFirestore.getInstance();

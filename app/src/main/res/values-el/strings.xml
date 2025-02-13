@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Unipi Αφηγήσεις Ηχου</string>
+    <string name="welcome_message">Καλώς ήρθατε στις Αφηγήσεις Ηχου του Unipi!</string>
+    <string name="login_button">Σύνδεση</string>
+    <string name="register_button">Εγγραφή</string>
+    <string name="profile_title">Προφίλ</string>
+    <string name="username">Όνομα χρήστη: user123</string>
+    <string name="email">Email: user@example.com</string>
+    <string name="most_listened_story">Πιο Ακουστή Ιστορία:</string>
+    <string name="listen_count">Αριθμός Ακροάσεων: 10</string>
+    <string name="view_favorite_stories">Προβολή Αγαπημένων Ιστοριών</string>
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="select_language">Επιλέξτε Γλώσσα</string>
+    <string name="confirm_button">Επιβεβαίωση!</string>
+    <string name="story_title">Τίτλος Ιστορίας</string>
+    <string name="by_author">Από: Όνομα Συγγραφέα</string>
+    <string name="year">Έτος</string>
+    <string name="story_preview">Αυτή είναι μια προεπισκόπηση της ιστορίας...</string>
+    <string name="view_more">Δείτε Περισσότερα</string>
+    <string name="play">Αναπαραγωγή</string>
+    <string name="menu_title">Μενού</string>
+    <string name="first_fragment_label">Πρώτο Fragment</string>
+    <string name="second_fragment_label">Δεύτερο Fragment</string>
+</resources>

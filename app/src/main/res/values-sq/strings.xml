@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Unipi Audio Stories</string>
+    <string name="welcome_message">Mirë se vini në Unipi Audio Stories!</string>
+    <string name="login_button">Hyr</string>
+    <string name="register_button">Regjistrohu</string>
+    <string name="profile_title">Profili</string>
+    <string name="username">Emri i përdoruesit: user123</string>
+    <string name="email">Email: user@example.com</string>
+    <string name="most_listened_story">Historia Më E Dëgjuar:</string>
+    <string name="listen_count">Numri i Dëgjimeve: 10</string>
+    <string name="view_favorite_stories">Shiko Historitë e Preferuara</string>
+    <string name="settings_title">Cilësimet</string>
+    <string name="select_language">Zgjidhni Gjuhën</string>
+    <string name="confirm_button">Konfirmo!</string>
+    <string name="story_title">Titulli i Historisë</string>
+    <string name="by_author">Nga: Emri i Autorit</string>
+    <string name="year">Viti</string>
+    <string name="story_preview">Kjo është një pamje paraprake e historisë...</string>
+    <string name="view_more">Shiko Më Shumë</string>
+    <string name="play">Luaj</string>
+    <string name="menu_title">Menu</string>
+    <string name="first_fragment_label">Fragmenti i Parë</string>
+    <string name="second_fragment_label">Fragmenti i Dytë</string>
+</resources>

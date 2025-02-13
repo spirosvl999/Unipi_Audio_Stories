@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Settings"
+                android:text="@string/settings_title"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="50sp" />
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Select Language"
+                android:text="@string/select_language"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:paddingStart="10dp" />
@@ -46,7 +46,7 @@
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinnerLanguage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="44dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/black" />
 
@@ -56,12 +56,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp">
 
-                <ProgressBar
-                    android:id="@+id/settingsProgressBar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:visibility="invisible" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnConfirm"
@@ -72,7 +66,7 @@
                     android:paddingTop="10dp"
                     android:paddingEnd="20dp"
                     android:paddingBottom="20dp"
-                    android:text="Confirm!"
+                    android:text="@string/confirm_button"
                     app:cornerRadius="10dp" />
 
             </FrameLayout>

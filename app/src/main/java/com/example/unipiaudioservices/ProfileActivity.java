@@ -2,6 +2,7 @@ package com.example.unipiaudioservices;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
 
         // Initialize Firebase
         auth = FirebaseAuth.getInstance();
@@ -62,8 +64,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Button to go to Favorite Stories
         favStoriesButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfileActivity.this, FavStoriesActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(ProfileActivity.this, FavStoriesActivity.class);
+            //startActivity(intent);
+            Toast.makeText(ProfileActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
         });
 
         // Bottom Navigation Setup

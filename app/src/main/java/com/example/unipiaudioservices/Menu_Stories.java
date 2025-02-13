@@ -1,6 +1,7 @@
 package com.example.unipiaudioservices;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -24,6 +25,7 @@ public class Menu_Stories extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_stories);
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
 
         // RecyclerView setup
         recyclerView = findViewById(R.id.recyclerView);

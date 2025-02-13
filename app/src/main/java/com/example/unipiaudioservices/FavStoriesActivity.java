@@ -1,6 +1,7 @@
 package com.example.unipiaudioservices;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class FavStoriesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fav_stories);
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
 
         // Firebase instances
         db = FirebaseFirestore.getInstance();

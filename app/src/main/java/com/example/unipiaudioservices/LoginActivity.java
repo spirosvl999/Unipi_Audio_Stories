@@ -1,6 +1,7 @@
 package com.example.unipiaudioservices;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +39,8 @@ public class LoginActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+
         txtSignUp = findViewById(R.id.txtSignUp);
 
         edtEmail = findViewById(R.id.edtSignInEmail);
