@@ -23,4 +23,4 @@ The user will be provided with statistics like as how many times he has listened
 - [Vlachos Spiridon](https://github.com/spirosvl999)
 
 ## Last Updated
-This project was last updated on [2/17/2025].
+This project was last updated on [2/19/2025].
