@@ -8,17 +8,15 @@ It provides a user-friendly experience with Firebase authentication, listening s
 
 <p align="center"><a href="https://github.com/spirosvl999/Unipi_Audio_Stories"><img src="https://github.com/spirosvl999/Unipi_Audio_Stories/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" height="300" width="300" /></p>
 
-## Features  
-- **User Authentication** (Register, Login, Logout) via Firebase
-- **Stream & Listen** to high-quality children's audio stories
-- **Track Listening Statistics** to monitor story engagement
-- **Multi-Language Support** (English, Greek, Italian, Albanian)
-- **User-Friendly Interface** optimized for children  
+## Key Features  
+- **User Authentication** (Register, Login, Logout) via Firebase.
+- **Stream & Listen** to high-quality children's audio stories.
+- **Track Listening Statistics** to monitor story engagement.
+- **Multi-Language Support** (English, Greek, Italian, Albanian).
+- **User-Friendly Interface** optimized for children.
 
 ## Programming Languages & Tools:
-
 - Java
-
 - Firebase Firestore Database
 
 
