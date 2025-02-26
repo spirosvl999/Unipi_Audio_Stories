@@ -17,6 +17,7 @@ It provides a user-friendly experience with Firebase authentication, listening s
 
 ## Programming Languages & Tools:
 - Java
+- XML
 - Firebase Firestore Database
 
 
