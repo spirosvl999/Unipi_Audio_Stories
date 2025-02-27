@@ -150,7 +150,7 @@ public class RegisterActivity extends AppCompatActivity
                 Map<String, Object> user = new HashMap<>();
                 user.put("Username", txtUserName);
                 user.put("Email", txtEmail);
-                user.put("Password", txtPassword);
+                user.put("Password", txtPassword);                                          // need to put hash
                 user.put("Created", System.currentTimeMillis());
 
                 // Add a new document with a generated ID
