@@ -19,6 +19,7 @@ It provides a user-friendly experience with Firebase authentication, listening s
 - Fix when the app uses TTS, app can't do anything else
 - More languages.
 - Translate also the stories when TTS
+- User Uploads stories
 
 ## Programming Languages & Tools:
 - Java
