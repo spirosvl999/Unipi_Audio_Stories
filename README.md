@@ -16,9 +16,9 @@ It provides a user-friendly experience with Firebase authentication, listening s
 - **User-Friendly Interface** optimized for children.
 
 ## Updates to do:
-- More languages.
-- Translate also the stories when TTS
-- Make "Favourite Stories" tab
+- Translate also the stories when TTS.
+- Make "Favourite Stories" tab.
+- Encrypt passwords.
 
 ## Programming Languages & Tools:
 - Java
