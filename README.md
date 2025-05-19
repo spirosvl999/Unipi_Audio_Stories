@@ -15,11 +15,6 @@ It provides a user-friendly experience with Firebase authentication, listening s
 - **Multi-Language Support** (English, Greek, Italian, Albanian).
 - **User-Friendly Interface** optimized for children.
 
-## Updates to do:
-- Translate also the stories when TTS.
-- Make "Favourite Stories" tab.
-- Encrypt passwords.
-
 ## Programming Languages & Tools:
 - Java
 - XML
